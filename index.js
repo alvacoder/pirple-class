@@ -15,10 +15,13 @@ const server = http.createServer(function (req, res) {
     const method = req.method.toLowerCase();
 
     // get query string as object
-    let queryStringObject = JSON.stringify(parsedUrl.query);
+    const queryStringObject = JSON.stringify(parsedUrl.query);
+
+    // get headers
+    const headers = req.headers;
 
     res.end("Hello World!");
-    console.log(`Request received on path: ${trimmedPath} with a ${method} request type and with these query string params ${queryStringObject}.`);
+    console.log(`Request received on path: ${trimmedPath} with a ${method} request type, with these query string params ${queryStringObject} and with these headers ${headers}.`);
 })
 
 server.listen(4000, () => {
