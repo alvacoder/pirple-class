@@ -11,8 +11,14 @@ const server = http.createServer(function (req, res) {
     // trim slashes
     const trimmedPath = path.replace(/^\/+|\/+$/g, '');
 
+    // get http method
+    const method = req.method.toLowerCase();
+
+    // get query string as object
+    let queryStringObject = JSON.stringify(parsedUrl.query);
+
     res.end("Hello World!");
-    console.log(trimmedPath);
+    console.log(`Request received on path: ${trimmedPath} with a ${method} request type and with these query string params ${queryStringObject}.`);
 })
 
 server.listen(4000, () => {
